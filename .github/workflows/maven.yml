@@ -1,4 +1,4 @@
-name: Maven Build
+name: Maven Build and Test
 
 on:
   push:
@@ -11,18 +11,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'  # Set this to the version you need
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17' # Specify the version of JDK required
 
-      - name: Build with Maven
-        run: mvn clean install
+    - name: Build with Maven
+      run: mvn clean install
 
-      - name: Run tests
-        run: mvn test
+    - name: Run tests
+      run: mvn test
 
